@@ -29,7 +29,7 @@ bool comp_strings(const char *string_1, const char *string_2)
     return strcmp(string_1, string_2) == 0;
 }
 
-void sort_array(int array[], int size, bool is_ascending)
+int *sort_array(int array[], int size, bool is_ascending)
 {
     if (is_ascending)
     {
@@ -39,16 +39,19 @@ void sort_array(int array[], int size, bool is_ascending)
     {
         sort(array, array + size, greater<int>());
     }
-
-    for (int i = 0; i < size; i++)
-    {
-        cout << array[i] << " ";
-    }
-    cout << endl;
+    return array;
 }
 
-void show_hash(int array[], int size) {
-    
+void print_array(int *array, int size)
+{
+    for (int i = 0; i < size; i++)
+    {
+        cout << array[i] << ", ";
+    }
+}
+
+void show_hash(int array[], int size)
+{
 }
 
 int main()
@@ -64,12 +67,16 @@ int main()
     {
     case 'a':
     {
-        sort_array(array, size, true);
+        int *sorted = sort_array(array, size, true);
+        print_array(sorted, size);
         break;
     }
     case 'd':
-        sort_array(array, size, false);
+    {
+        int *sorted = sort_array(array, size, false);
+        print_array(sorted, size);
         break;
+    }
     case 'h':
         // Implement hash table logic here
         break;
@@ -77,7 +84,6 @@ int main()
         // Implement moving average logic here
         break;
     case 'o':
-        // Print the original array
         for (int i = 0; i < size; i++)
         {
             cout << array[i] << " ";
