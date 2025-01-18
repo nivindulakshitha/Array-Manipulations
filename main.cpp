@@ -1,5 +1,6 @@
 #include <iostream>
 #include <string.h>
+#include <bits/stdc++.h>
 
 using namespace std;
 
@@ -7,7 +8,7 @@ int print_options()
 {
     const char *options =
         "A) Ascending\n"
-        "D) Descendin\n"
+        "D) Descending\n"
         "H) Hash Table\n"
         "M) Moving Average\n"
         "O) Original Array\n"
@@ -25,14 +26,29 @@ char *get_input()
 
 bool comp_strings(const char *string_1, const char *string_2)
 {
-    if (strcmp(string_1, string_2) == 0)
+    return strcmp(string_1, string_2) == 0;
+}
+
+void sort_array(int array[], int size, bool is_ascending)
+{
+    if (is_ascending)
     {
-        return true;
+        sort(array, array + size);
     }
     else
     {
-        return false;
+        sort(array, array + size, greater<int>());
     }
+
+    for (int i = 0; i < size; i++)
+    {
+        cout << array[i] << " ";
+    }
+    cout << endl;
+}
+
+void show_hash(int array[], int size) {
+    
 }
 
 int main()
@@ -42,31 +58,38 @@ int main()
     print_options();
     char *option = strlwr(get_input());
 
-    if (comp_strings(option, "a"))
+    int size = sizeof(array) / sizeof(array[0]);
+
+    switch (option[0])
     {
-        cout << "Choose A";
+    case 'a':
+    {
+        sort_array(array, size, true);
+        break;
     }
-    else if (comp_strings(option, "d"))
-    {
-        cout << "Choose D";
-    }
-    else if (comp_strings(option, "h"))
-    {
-        cout << "Choose H";
-    }
-    else if (comp_strings(option, "m"))
-    {
-        cout << "Choose M";
-    }
-    else if (comp_strings(option, "o"))
-    {
-        cout << "Choose O";
-    }
-    else if (comp_strings(option, "e"))
-    {
-        cout << "Choose E";
-    } else {
-        cout << "Exiting...";
+    case 'd':
+        sort_array(array, size, false);
+        break;
+    case 'h':
+        // Implement hash table logic here
+        break;
+    case 'm':
+        // Implement moving average logic here
+        break;
+    case 'o':
+        // Print the original array
+        for (int i = 0; i < size; i++)
+        {
+            cout << array[i] << " ";
+        }
+        cout << endl;
+        break;
+    case 'e':
+        cout << "Exiting the program. Bye!" << endl;
+        break;
+    default:
+        cout << "Invalid option. Please try again." << endl;
+        break;
     }
 
     return 0;
