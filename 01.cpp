@@ -52,6 +52,38 @@ void print_array(int *array, int size)
 
 void show_hash(int array[], int size)
 {
+    int *sorted = sort_array(array, size, false);
+    int max_value = sorted[0];
+
+    for (int i = 10; i <= max_value; i += 10)
+    {
+        set<int> bucket;
+        cout << (i / 10) - 1 << ": ";
+        for (int j = 0; j < size; j++)
+        {
+            if (array[j] <= i && array[j] > (i - 10))
+            {
+                bucket.insert(array[j] % 10);
+            }
+        }
+        for (int num : bucket)
+        {
+            cout << num << " ";
+        }
+        cout << endl;
+    }
+}
+
+void moving_array(int array[], int size)
+{
+    int count = 0;
+
+    for (int i = 0; i < size; i++)
+    {
+        count += array[i];
+        float average = float(count) / float(i + 1);
+        cout << array[i] << " - " << average << endl;
+    }
 }
 
 int main()
@@ -78,10 +110,10 @@ int main()
         break;
     }
     case 'h':
-        // Implement hash table logic here
+        show_hash(array, size);
         break;
     case 'm':
-        // Implement moving average logic here
+        moving_array(array, size);
         break;
     case 'o':
         for (int i = 0; i < size; i++)
