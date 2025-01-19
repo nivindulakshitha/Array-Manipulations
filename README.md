@@ -83,16 +83,10 @@ This project includes a collection of practical exercises using arrays in C++. T
 
 ```
 .
-├── Exercise1/                 # Array manipulation (sorting, hash table, etc.)
-│   ├── main.cpp
-│   └── README.md
-├── Exercise2/                 # Matrix multiplication
-│   ├── main.cpp
-│   └── README.md
-├── Exercise3/                 # Image filtering
-│   ├── main.cpp
-│   └── README.md
-└── README.md                  # Project documentation
+├── 01.cpp 
+├── 02.cpp  
+├── 03.cpp 
+└── README.md
 ```
 
 ---
